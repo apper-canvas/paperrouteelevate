@@ -49,14 +49,15 @@ const CustomerTable = ({ customers, onEdit, onDelete }) => {
               </th>
             </tr>
           </thead>
-          <tbody className="bg-white divide-y divide-gray-200">
+<tbody className="bg-white divide-y divide-gray-200">
             {customers.map((customer, index) => (
               <motion.tr
                 key={customer.Id}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: index * 0.1 }}
-                className="hover:bg-gray-50 transition-colors duration-200"
+                className="hover:bg-gray-50 transition-colors duration-200 cursor-pointer"
+                onClick={() => onEdit(customer)}
               >
                 <td className="px-6 py-4 whitespace-nowrap">
                   <div className="flex items-center">
@@ -72,9 +73,12 @@ const CustomerTable = ({ customers, onEdit, onDelete }) => {
                       </div>
                     </div>
                   </div>
-                </td>
+</td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <div className="text-sm text-gray-900">{customer.phone}</div>
+                  {customer.email && (
+                    <div className="text-sm text-gray-500">{customer.email}</div>
+                  )}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <Badge variant={getStatusVariant(customer.status)}>
@@ -84,20 +88,26 @@ const CustomerTable = ({ customers, onEdit, onDelete }) => {
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                   {formatDate(customer.createdAt)}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+<td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                   <div className="flex items-center justify-end space-x-2">
                     <Button
                       variant="ghost"
                       size="small"
-                      onClick={() => onEdit(customer)}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        onEdit(customer);
+                      }}
                       className="text-primary-600 hover:text-primary-700"
                     >
                       <ApperIcon name="Edit" size={16} />
                     </Button>
                     <Button
-                      variant="ghost"
+variant="ghost"
                       size="small"
-                      onClick={() => onDelete(customer.Id)}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        onDelete(customer.Id);
+                      }}
                       className="text-error-600 hover:text-error-700"
                     >
                       <ApperIcon name="Trash2" size={16} />

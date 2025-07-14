@@ -9,13 +9,14 @@ const CustomerForm = ({ customer, onSave, onCancel }) => {
     name: customer?.name || "",
     address: customer?.address || "",
     phone: customer?.phone || "",
+    email: customer?.email || "",
+    deliveryAddress: customer?.deliveryAddress || "",
     status: customer?.status || "active",
   });
 
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const validateForm = () => {
+const validateForm = () => {
     const newErrors = {};
 
     if (!formData.name.trim()) {
@@ -30,6 +31,12 @@ const CustomerForm = ({ customer, onSave, onCancel }) => {
       newErrors.phone = "Phone number is required";
     } else if (!/^\(\d{3}\) \d{3}-\d{4}$/.test(formData.phone)) {
       newErrors.phone = "Please enter a valid phone number (123) 456-7890";
+    }
+
+    if (!formData.email.trim()) {
+      newErrors.email = "Email address is required";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = "Please enter a valid email address";
     }
 
     setErrors(newErrors);
@@ -119,6 +126,24 @@ const CustomerForm = ({ customer, onSave, onCancel }) => {
           error={errors.phone}
           placeholder="(123) 456-7890"
           required
+/>
+
+        <FormField
+          label="Email Address"
+          type="email"
+          value={formData.email}
+          onChange={(e) => handleInputChange("email", e.target.value)}
+          error={errors.email}
+          placeholder="Enter email address"
+          required
+        />
+
+        <FormField
+          label="Delivery Address"
+          value={formData.deliveryAddress}
+          onChange={(e) => handleInputChange("deliveryAddress", e.target.value)}
+          error={errors.deliveryAddress}
+          placeholder="Enter delivery address (if different from main address)"
         />
 
         <div className="space-y-2">
@@ -135,7 +160,6 @@ const CustomerForm = ({ customer, onSave, onCancel }) => {
             <option value="pending">Pending</option>
           </select>
         </div>
-
         <div className="flex items-center justify-end space-x-4 pt-4 border-t border-gray-200">
           <Button
             type="button"
