@@ -1,0 +1,66 @@
+[
+  {
+    "Id": 1,
+    "name": "Springfield Daily News",
+    "price": 1.25,
+    "type": "newspaper",
+    "frequency": "daily",
+    "createdAt": "2024-01-01T00:00:00Z"
+  },
+  {
+    "Id": 2,
+    "name": "Weekend Herald",
+    "price": 2.50,
+    "type": "newspaper",
+    "frequency": "weekly",
+    "createdAt": "2024-01-01T00:00:00Z"
+  },
+  {
+    "Id": 3,
+    "name": "Business Weekly",
+    "price": 4.99,
+    "type": "magazine",
+    "frequency": "weekly",
+    "createdAt": "2024-01-01T00:00:00Z"
+  },
+  {
+    "Id": 4,
+    "name": "Home & Garden Monthly",
+    "price": 6.95,
+    "type": "magazine",
+    "frequency": "monthly",
+    "createdAt": "2024-01-01T00:00:00Z"
+  },
+  {
+    "Id": 5,
+    "name": "Sports Illustrated",
+    "price": 5.99,
+    "type": "magazine",
+    "frequency": "weekly",
+    "createdAt": "2024-01-01T00:00:00Z"
+  },
+  {
+    "Id": 6,
+    "name": "Tech Today",
+    "price": 8.50,
+    "type": "magazine",
+    "frequency": "monthly",
+    "createdAt": "2024-01-01T00:00:00Z"
+  },
+  {
+    "Id": 7,
+    "name": "Medical Journal",
+    "price": 12.99,
+    "type": "journal",
+    "frequency": "monthly",
+    "createdAt": "2024-01-01T00:00:00Z"
+  },
+  {
+    "Id": 8,
+    "name": "Financial Times",
+    "price": 3.75,
+    "type": "newspaper",
+    "frequency": "daily",
+    "createdAt": "2024-01-01T00:00:00Z"
+  }
+]
